@@ -14,16 +14,18 @@
         <script type="text/javascript">
         var num=1;
         Concurrent.Thread.create(function(){
-            $("h1").append("Texto "+num);
-            Concurrent.Thread.sleep(1000);
-            num++;
+            while(1)
+            {
+                $("h1").append("Texto "+num+"<br>");
+                Concurrent.Thread.sleep(1000);
+                num=num+1;
+            }
         });
         </script>
-    </head>
     <body>
         
         <center>
-            <h1>HolaGatho</h1>
+            <h1>HolaGatho<br></h1>
         </center>
         
     </body>
