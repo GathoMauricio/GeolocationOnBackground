@@ -7,8 +7,8 @@
     <author email="contacto@katzesystems.com" href="http://katzesystems.com/">
         Oscar Mauricio Juarez Soriano
     </author>
-    <content src="/www/index.html" />
-    <icon src="/img/icono.png"/>
+    <content src="www/index.html" />
+    <icon src="img/icono.png"/>
     <plugin name="cordova-plugin-whitelist" version="1" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
