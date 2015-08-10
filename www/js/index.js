@@ -19,6 +19,7 @@
     function onDeviceReady() {
         document.addEventListener("pause", onPause, false);
         document.addEventListener("resume", onResume, false);
+        document.addEventListener("backbutton", onBackKeyDown, false);
     }
 
     // Handle the pause event
@@ -36,4 +37,6 @@
     function onResume() {
         alert("La app se recupero");
     }    
-    
+    function onBackKeyDown() {
+        //No hacer nada al precionar el botón de retroceso
+    }
