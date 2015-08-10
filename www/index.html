@@ -16,6 +16,7 @@
         Concurrent.Thread.create(function(){
             $("h1").append("Texto "+num);
             Concurrent.Thread.sleep(1000);
+            num++;
         });
         </script>
     </head>
