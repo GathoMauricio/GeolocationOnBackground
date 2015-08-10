@@ -39,4 +39,5 @@
     }    
     function onBackKeyDown() {
         //No hacer nada al precionar el botón de retroceso
+        alert("No se va a cerrar");
     }
