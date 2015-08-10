@@ -10,6 +10,7 @@
     <content src="www/index.html" />
     <icon src="img/icono.png"/>
     <preference name="KeepRunning" value="true"/>
+    <preference name="phonegap-version" value="3.1.0" />
     <plugin name="cordova-plugin-whitelist" version="1" />
     <access origin="*" />
 
