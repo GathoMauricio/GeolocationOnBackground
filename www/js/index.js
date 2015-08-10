@@ -3,7 +3,7 @@
     var num=1;
     function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
-        
+
         Concurrent.Thread.create(function(){
             while(1)
             {
@@ -18,6 +18,7 @@
     //
     function onDeviceReady() {
         document.addEventListener("pause", onPause, false);
+        document.addEventListener("resume", onResume, false);
     }
 
     // Handle the pause event
@@ -31,4 +32,8 @@
                 num=num+1;
             }
         });
-    }
+     }   
+    function onResume() {
+        alert("La app se recupero");
+    }    
+    
