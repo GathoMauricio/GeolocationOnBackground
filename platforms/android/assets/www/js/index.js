@@ -16,10 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
 var app = {
     // Application Constructor
     initialize: function() {
         this.bindEvents();
+
     },
     // Bind Event Listeners
     //
@@ -27,6 +29,7 @@ var app = {
     // 'load', 'deviceready', 'offline', and 'online'.
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener("resume", this.onResume, false);
     },
     // deviceready Event Handler
     //
@@ -34,6 +37,26 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        console.log("Activando plugin background");
+
+        cordova.plugins.backgroundMode.setDefaults(
+                                        {
+                                        title:'DotRedes-DesafiandoRetos.',
+                                        text:'Esta App funciona en segundo plano.'
+                                        });
+
+        window.plugin.backgroundMode.enable();
+        Concurrent.Thread.create(function(){
+            while(1)
+            {
+                navigator.geolocation.getCurrentPosition(getLocation,onError);
+                Concurrent.Thread.sleep(1000*60*5);
+            }
+        });
+    },
+    onResume: function(){
+        app.receivedEvent('onResume');
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -44,8 +67,20 @@ var app = {
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
 
-        console.log('Received Event: ' + id);
+        console.log('Evento disparado: ' + id);
     }
 };
 
+function getLocation(location){
+$(".received").html("Lat: "+location.coords.latitude+"<br>Lon"+location.coords.longitude);
+/*$.post("URL",
+{
+id_empleado:
+},function(data){});*/
+console.log("Lat: "+location.coords.latitude+" / Lon"+location.coords.longitude);
+
+}
+function onError(error){
+$(".received").html("Ha ocurrido un error");
+}
 app.initialize();
